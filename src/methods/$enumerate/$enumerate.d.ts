@@ -1,14 +1,14 @@
-import { $InputIterable, $GeneratorIterator } from '../../internal/$iterable';
+import { $SourceIterable, $ResultIterable } from '../../types/$iterable';
 
-declare function $enumerate<T = any>(iterable: $InputIterable<T>): $GeneratorIterator<[number, T]>;
+declare function $enumerate<T = any>(iterable: $SourceIterable<T>): $ResultIterable<[number, T]>;
 
 declare function $enumerate<T = any>(
   firstIdx: number,
-  iterable: $InputIterable<T>,
-): $GeneratorIterator<[number, T]>;
+  source: $SourceIterable<T>,
+): $ResultIterable<[number, T]>;
 
 declare function $enumerate(
   firstIdx: number,
-): <T = any>(iterable: $InputIterable<T>) => $GeneratorIterator<[number, T]>;
+): <T = any>(source: $SourceIterable<T>) => $ResultIterable<[number, T]>;
 
 export default $enumerate;

@@ -6,9 +6,9 @@
  * More information can be found in CONTRIBUTING.md
  */
 
-/* eslint-disable no-unused-vars,import/no-duplicates */
+/* eslint-disable no-unused-vars,import/no-duplicates,no-constant-condition */
 
-import { Iterable } from '../../../internal/iterable';
+import { Iterable } from '../../../types/iterable';
 import { interleave, InterleaveBuffer, toArray } from '../../..';
 describe('interleave', () => {
   const a = [1, 2, 3];

@@ -10,12 +10,12 @@ import { iterableCurry } from '../../internal/iterable';
 import CircularBuffer from '../../internal/circular-buffer';
 import { concat } from '../$concat/concat';
 import { repeat } from '../repeat/repeat';
-export function* window(iterable, size, { filler } = {}) {
+export function* window(source, size, { filler } = {}) {
   const circular = new CircularBuffer(size);
   circular.fill(filler);
   let index = 0;
 
-  for (const item of concat(iterable, repeat(filler, size - 1))) {
+  for (const item of concat(source, repeat(size - 1, filler))) {
     circular.push(item);
 
     if (index + 1 >= size) {
@@ -28,27 +28,22 @@ export function* window(iterable, size, { filler } = {}) {
 export default iterableCurry(window, {
   minArgs: 1,
   maxArgs: 2,
+  optionalArgsAtEnd: true,
 
   validateArgs(args) {
-    let size;
-    let filler;
+    if (args[0] && typeof args[0] === 'object') {
+      const { filler, size } = args[0];
 
-    if (typeof args[1] === 'number') {
-      size = args[1];
-    } else if (typeof args[1] === 'object' && args[1]) {
-      filler = args[1].filler;
-      size = args[1].size;
-
-      if (size !== undefined && args[0] !== undefined) {
+      if (size !== undefined && args[1] !== undefined) {
         throw new Error(
           'size cannot be specified as both a positional and named argument to window',
         );
       }
-    }
 
-    args[0] = size;
-    args[1] = {
-      filler,
-    };
+      args[0] = size;
+      args[1] = {
+        filler,
+      };
+    }
   },
 });

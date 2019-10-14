@@ -1,10 +1,10 @@
 import { $MaybePromise } from '../../../generate/async.macro';
 
-import { $InputIterable } from '../../internal/$iterable';
+import { $SourceIterable } from '../../types/$iterable';
 
 declare function $lastOr<E, T = any>(
   whenEmpty: E,
-  iterable: $InputIterable<T>,
+  iterable: $SourceIterable<T>,
 ): $MaybePromise<T | E>;
 
 export default $lastOr;

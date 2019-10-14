@@ -6,38 +6,38 @@
  * More information can be found in CONTRIBUTING.md
  */
 
-import { AsyncInputIterable, AsyncGeneratorIterator } from '../../internal/async-iterable';
+import { AsyncSourceIterable, AsyncResultIterable } from '../../types/async-iterable';
 declare function asyncSlice<T = any>(opts: {
   readonly start?: number;
   readonly end?: number;
   readonly step?: number;
-}): (iterable: AsyncInputIterable<T>) => AsyncGeneratorIterator<T>;
+}): (source: AsyncSourceIterable<T>) => AsyncResultIterable<T>;
 declare function asyncSlice<T = any>(
   start?: number,
   end?: number,
   step?: number,
-): (iterable: AsyncInputIterable<T>) => AsyncGeneratorIterator<T>;
+): (source: AsyncSourceIterable<T>) => AsyncResultIterable<T>;
 declare function asyncSlice<T = any>(
   opts: {
     readonly start?: number;
     readonly end?: number;
     readonly step?: number;
   },
-  iterable: AsyncInputIterable<T>,
-): AsyncGeneratorIterator<T>;
+  source: AsyncSourceIterable<T>,
+): AsyncResultIterable<T>;
 declare function asyncSlice<T = any>(
   start: number,
-  iterable: AsyncInputIterable<T>,
-): AsyncGeneratorIterator<T>;
+  source: AsyncSourceIterable<T>,
+): AsyncResultIterable<T>;
 declare function asyncSlice<T = any>(
   start: number,
   end: number,
-  iterable: AsyncInputIterable<T>,
-): AsyncGeneratorIterator<T>;
+  source: AsyncSourceIterable<T>,
+): AsyncResultIterable<T>;
 declare function asyncSlice<T = any>(
   start: number,
   end: number,
   step: number,
-  iterable: AsyncInputIterable<T>,
-): AsyncGeneratorIterator<T>;
+  source: AsyncSourceIterable<T>,
+): AsyncResultIterable<T>;
 export default asyncSlice;

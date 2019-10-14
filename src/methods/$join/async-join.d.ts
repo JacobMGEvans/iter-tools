@@ -6,8 +6,8 @@
  * More information can be found in CONTRIBUTING.md
  */
 
-import { AsyncInputIterable, AsyncGeneratorIterator } from '../../internal/async-iterable';
+import { AsyncSourceIterable, AsyncResultIterable } from '../../types/async-iterable';
 declare function asyncJoin<T = any>(
-  iterable: AsyncInputIterable<AsyncInputIterable<T>>,
-): AsyncGeneratorIterator<T>;
+  source: AsyncSourceIterable<AsyncSourceIterable<T>>,
+): AsyncResultIterable<T>;
 export default asyncJoin;

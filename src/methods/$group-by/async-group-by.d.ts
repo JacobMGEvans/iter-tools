@@ -6,21 +6,19 @@
  * More information can be found in CONTRIBUTING.md
  */
 
-import { AsyncInputIterable, AsyncGeneratorIterator } from '../../internal/async-iterable';
+import { AsyncSourceIterable, AsyncResultIterable } from '../../types/async-iterable';
 declare function asyncGroupBy(
   key: null | undefined,
-): <T = any>(
-  iterable: AsyncInputIterable<T>,
-) => AsyncGeneratorIterator<[T, AsyncGeneratorIterator<T>]>;
+): <T = any>(source: AsyncSourceIterable<T>) => AsyncResultIterable<[T, AsyncResultIterable<T>]>;
 declare function asyncGroupBy<K, T = any>(
   key: (item: T) => K | Promise<K>,
-): (iterable: AsyncInputIterable<T>) => AsyncGeneratorIterator<[K, AsyncGeneratorIterator<T>]>;
+): (source: AsyncSourceIterable<T>) => AsyncResultIterable<[K, AsyncResultIterable<T>]>;
 declare function asyncGroupBy<T = any>(
   key: null | undefined,
-  iterable: AsyncInputIterable<T>,
-): AsyncGeneratorIterator<[T, AsyncGeneratorIterator<T>]>;
+  source: AsyncSourceIterable<T>,
+): AsyncResultIterable<[T, AsyncResultIterable<T>]>;
 declare function asyncGroupBy<K, T = any>(
   key: (item: T) => K | Promise<K>,
-  iterable: AsyncInputIterable<T>,
-): AsyncGeneratorIterator<[K, AsyncGeneratorIterator<T>]>;
+  source: AsyncSourceIterable<T>,
+): AsyncResultIterable<[K, AsyncResultIterable<T>]>;
 export default asyncGroupBy;

@@ -1,15 +1,15 @@
 import { $Promise } from '../../../generate/async.macro';
 
-import { $InputIterable } from '../../internal/$iterable';
-import { InputIterable as SyncInputIterable } from '../../internal/iterable';
+import { $SourceIterable } from '../../types/$iterable';
+import { SourceIterable as SyncSourceIterable } from '../../types/iterable';
 
 declare function $includesAnySubseq(
-  subseqs: SyncInputIterable<$InputIterable<any>>,
-): (iterable: $InputIterable<any>) => $Promise<boolean>;
+  subseqs: SyncSourceIterable<$SourceIterable<any>>,
+): (iterable: $SourceIterable<any>) => $Promise<boolean>;
 
 declare function $includesAnySubseq(
-  subseqs: SyncInputIterable<$InputIterable<any>>,
-  iterable: $InputIterable<any>,
+  subseqs: SyncSourceIterable<$SourceIterable<any>>,
+  iterable: $SourceIterable<any>,
 ): $Promise<boolean>;
 
 export default $includesAnySubseq;

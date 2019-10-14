@@ -1,16 +1,16 @@
-import { GeneratorIterator } from '../../internal/iterable';
-import { AsyncGeneratorIterator } from '../../internal/async-iterable';
+import { ResultIterable } from '../../types/iterable';
+import { AsyncResultIterable } from '../../types/async-iterable';
 
 export declare class OneTwoThreeIterable {
   next(): IteratorResult<number>;
   return(): void;
 
-  [Symbol.iterator](): GeneratorIterator<number>;
+  [Symbol.iterator](): ResultIterable<number>;
 }
 
 export declare class AsyncOneTwoThreeIterable {
   next(): Promise<IteratorResult<number>>;
   return(): Promise<void>;
 
-  [Symbol.asyncIterator](): AsyncGeneratorIterator<number>;
+  [Symbol.asyncIterator](): AsyncResultIterable<number>;
 }

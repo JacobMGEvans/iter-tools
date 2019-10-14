@@ -1,3 +1,4 @@
 {
-  "type": "create"
+  "type": "create",
+  "signatures": [[{ "name": "times" }, { "name": "item" }], [{ "name": "item" }]]
 }

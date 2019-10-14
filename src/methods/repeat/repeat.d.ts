@@ -1,5 +1,7 @@
-import { GeneratorIterator } from '../../internal/iterable';
+import { ResultIterable } from '../../types/iterable';
 
-declare function repeat<T>(obj: T, times?: number): GeneratorIterator<T>;
+declare function repeat<T>(n: number, item: T): ResultIterable<T>;
+
+declare function repeat<T>(item: T): ResultIterable<T>;
 
 export default repeat;

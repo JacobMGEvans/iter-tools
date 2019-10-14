@@ -6,13 +6,13 @@
  * More information can be found in CONTRIBUTING.md
  */
 
-import { InputIterable as SyncInputIterable } from '../../internal/iterable';
-import { InputIterable, GeneratorIterator } from '../../internal/iterable';
+import { SourceIterable as SyncSourceIterable } from '../../types/iterable';
+import { SourceIterable, ResultIterable } from '../../types/iterable';
 declare function joinWithSubseq<W, T = any>(
-  subseq: SyncInputIterable<W>,
-  iterable: InputIterable<InputIterable<T>>,
-): GeneratorIterator<T | W>;
+  subseq: SyncSourceIterable<W>,
+  source: SourceIterable<SourceIterable<T>>,
+): ResultIterable<T | W>;
 declare function joinWithSubseq<W>(
-  subseq: SyncInputIterable<W>,
-): <T = any>(iterable: InputIterable<InputIterable<T>>) => GeneratorIterator<T | W>;
+  subseq: SyncSourceIterable<W>,
+): <T = any>(source: SourceIterable<SourceIterable<T>>) => ResultIterable<T | W>;
 export default joinWithSubseq;

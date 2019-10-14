@@ -6,6 +6,6 @@
  * More information can be found in CONTRIBUTING.md
  */
 
-import { AsyncInputIterable, AsyncGeneratorIterator } from '../../internal/async-iterable';
-declare function asyncReverse<T = any>(iterable: AsyncInputIterable<T>): AsyncGeneratorIterator<T>;
+import { AsyncSourceIterable, AsyncResultIterable } from '../../types/async-iterable';
+declare function asyncReverse<T = any>(source: AsyncSourceIterable<T>): AsyncResultIterable<T>;
 export default asyncReverse;

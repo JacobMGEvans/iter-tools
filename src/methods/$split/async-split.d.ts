@@ -6,10 +6,10 @@
  * More information can be found in CONTRIBUTING.md
  */
 
-import { GeneratorIterator as SyncGeneratorIterator } from '../../internal/iterable';
-import { AsyncInputIterable, AsyncGeneratorIterator } from '../../internal/async-iterable';
+import { ResultIterable as SyncResultIterable } from '../../types/iterable';
+import { AsyncSourceIterable, AsyncResultIterable } from '../../types/async-iterable';
 declare function asyncSplit<T = any>(
-  iterable: AsyncInputIterable<T>,
-): AsyncGeneratorIterator<SyncGeneratorIterator<T>>;
-declare function asyncSplit(iterable: string): string;
+  source: AsyncSourceIterable<T>,
+): AsyncResultIterable<SyncResultIterable<T>>;
+declare function asyncSplit(source: string): string;
 export default asyncSplit;

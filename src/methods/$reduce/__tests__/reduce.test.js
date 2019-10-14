@@ -6,9 +6,9 @@
  * More information can be found in CONTRIBUTING.md
  */
 
-/* eslint-disable no-unused-vars,import/no-duplicates */
+/* eslint-disable no-unused-vars,import/no-duplicates,no-constant-condition */
 
-import { InputIterable } from '../../../internal/iterable';
+import { SourceIterable } from '../../../types/iterable';
 import { reduce, range } from '../../..';
 import { OneTwoThreeIterable } from '../../../__tests__/__framework__/fixtures';
 describe('reduce', () => {
@@ -48,7 +48,7 @@ describe('reduce', () => {
     expect(error.message).toMatchSnapshot();
   });
   it('sums a range (using curry)', () => {
-    const sum: (iterable: InputIterable<number>) => number = reduce((acc = 0, x) => acc + x);
+    const sum: (iterable: SourceIterable<number>) => number = reduce((acc = 0, x) => acc + x);
     expect(sum(range(4))).toBe(6);
   });
   it('cleans up iterable', () => {

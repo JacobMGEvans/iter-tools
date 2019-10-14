@@ -6,6 +6,6 @@
  * More information can be found in CONTRIBUTING.md
  */
 
-import { InputIterable } from '../../internal/iterable';
-declare function toArray<T>(iterable: InputIterable<T>): T[];
+import { SourceIterable } from '../../types/iterable';
+declare function toArray<T>(source: SourceIterable<T>): T[];
 export default toArray;

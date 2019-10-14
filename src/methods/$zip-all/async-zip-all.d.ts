@@ -6,14 +6,14 @@
  * More information can be found in CONTRIBUTING.md
  */
 
-import { AsyncInputIterable, AsyncGeneratorIterator } from '../../internal/async-iterable';
+import { AsyncSourceIterable, AsyncResultIterable } from '../../types/async-iterable';
 declare function asyncZipAll<F, T = any>(
   options: {
     filler?: F;
   },
-  ...iterables: Array<AsyncInputIterable<T>>
-): AsyncGeneratorIterator<Array<T | F>>;
+  ...sources: Array<AsyncSourceIterable<T>>
+): AsyncResultIterable<Array<T | F>>;
 declare function asyncZipAll<T = any>(
-  ...iterables: Array<AsyncInputIterable<T>>
-): AsyncGeneratorIterator<Array<T | undefined>>;
+  ...sources: Array<AsyncSourceIterable<T>>
+): AsyncResultIterable<Array<T | undefined>>;
 export default asyncZipAll;

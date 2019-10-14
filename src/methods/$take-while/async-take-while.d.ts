@@ -6,12 +6,12 @@
  * More information can be found in CONTRIBUTING.md
  */
 
-import { AsyncInputIterable, AsyncGeneratorIterator } from '../../internal/async-iterable';
+import { AsyncSourceIterable, AsyncResultIterable } from '../../types/async-iterable';
 declare function asyncTakeWhile<T = any>(
   func: (item: T, i: number) => boolean | Promise<boolean>,
-): (iterable: AsyncInputIterable<T>) => AsyncGeneratorIterator<T>;
+): (source: AsyncSourceIterable<T>) => AsyncResultIterable<T>;
 declare function asyncTakeWhile<T = any>(
   func: (item: T, i: number) => boolean | Promise<boolean>,
-  iterable: AsyncInputIterable<T>,
-): AsyncGeneratorIterator<T>;
+  source: AsyncSourceIterable<T>,
+): AsyncResultIterable<T>;
 export default asyncTakeWhile;

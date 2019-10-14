@@ -6,12 +6,12 @@
  * More information can be found in CONTRIBUTING.md
  */
 
-import { AsyncInputIterable, AsyncGeneratorIterator } from '../../internal/async-iterable';
+import { AsyncSourceIterable, AsyncResultIterable } from '../../types/async-iterable';
 declare function asyncJoinWith<W, T = any>(
   value: W,
-  iterable: AsyncInputIterable<AsyncInputIterable<T>>,
-): AsyncGeneratorIterator<T | W>;
+  source: AsyncSourceIterable<AsyncSourceIterable<T>>,
+): AsyncResultIterable<T | W>;
 declare function asyncJoinWith<W>(
   value: W,
-): <T = any>(iterable: AsyncInputIterable<AsyncInputIterable<T>>) => AsyncGeneratorIterator<T | W>;
+): <T = any>(source: AsyncSourceIterable<AsyncSourceIterable<T>>) => AsyncResultIterable<T | W>;
 export default asyncJoinWith;

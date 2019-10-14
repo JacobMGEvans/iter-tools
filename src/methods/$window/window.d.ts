@@ -6,13 +6,26 @@
  * More information can be found in CONTRIBUTING.md
  */
 
-import { Repeat8 } from '../../internal/types/utility';
-import { InputIterable, GeneratorIterator } from '../../internal/iterable';
-declare function window<Size extends number, Filler = undefined, T = any>(
+import { SourceIterable, ResultIterable } from '../../types/iterable';
+import { ResultIterable as SyncResultIterable } from '../../types/iterable';
+declare function window<Filler = undefined, T = any>(
+  size: number,
   opts: {
-    readonly size: Size;
     readonly filler?: Filler;
   },
-  iterable: InputIterable<T>,
-): GeneratorIterator<Repeat8<T | Filler, Size>>;
+  source: SourceIterable<T>,
+): ResultIterable<SyncResultIterable<T | Filler>>;
+declare function window<T = any>(
+  size: number,
+  source: SourceIterable<T>,
+): ResultIterable<SyncResultIterable<T | undefined>>;
+declare function window(
+  size: number,
+  opts: {
+    readonly filler: any;
+  },
+): <T>(source: SourceIterable<T>) => ResultIterable<SyncResultIterable<T>>;
+declare function window(
+  size: number,
+): <T = any>(source: SourceIterable<T>) => ResultIterable<SyncResultIterable<T | undefined>>;
 export default window;

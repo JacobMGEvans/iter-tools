@@ -1,12 +1,12 @@
-import { AsyncInputIterable, AsyncGeneratorIterator } from '../../internal/async-iterable';
+import { AsyncSourceIterable, AsyncResultIterable } from '../../types/async-iterable';
 
 declare function asyncThrottle<T>(
-  n: number,
-): (iterable: AsyncInputIterable<T>) => AsyncGeneratorIterator<T>;
+  ms: number,
+): (source: AsyncSourceIterable<T>) => AsyncResultIterable<T>;
 
 declare function asyncThrottle<T>(
-  n: number,
-  iterable: AsyncInputIterable<T>,
-): AsyncGeneratorIterator<T>;
+  ms: number,
+  source: AsyncSourceIterable<T>,
+): AsyncResultIterable<T>;
 
 export default asyncThrottle;

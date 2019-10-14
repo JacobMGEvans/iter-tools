@@ -7,48 +7,47 @@
  */
 
 import {
-  AsyncInputIterable,
-  AsyncDefinedInputIterable,
-  AsyncGeneratorIterator,
-  AsyncMaybePromise,
-} from '../../internal/async-iterable';
-type AsyncFlattened<T> = T extends Array<infer U> ? U : T extends ReadonlyArray<infer U> ? U : T extends AsyncDefinedInputIterable<infer U> ? U : T; // prettier-ignore
+  AsyncSourceIterable,
+  AsyncDefinedSourceIterable,
+  AsyncResultIterable,
+} from '../../types/async-iterable';
+type AsyncFlattened<T> = T extends Array<infer U> ? U : T extends ReadonlyArray<infer U> ? U : T extends AsyncDefinedSourceIterable<infer U> ? U : T; // prettier-ignore
 
-declare function asyncFlat<U>(depth: 0, iterable: U): AsyncGeneratorIterator<AsyncFlattened<U>>; // prettier-ignore
+declare function asyncFlat<U>(depth: 0, source: U): AsyncResultIterable<AsyncFlattened<U>>; // prettier-ignore
 
-declare function asyncFlat<U>(depth: 1, iterable: U): AsyncGeneratorIterator<AsyncFlattened<AsyncFlattened<U>>>; // prettier-ignore
+declare function asyncFlat<U>(depth: 1, source: U): AsyncResultIterable<AsyncFlattened<AsyncFlattened<U>>>; // prettier-ignore
 
-declare function asyncFlat<U>(depth: 2, iterable: U): AsyncGeneratorIterator<AsyncFlattened<AsyncFlattened<AsyncFlattened<U>>>>; // prettier-ignore
+declare function asyncFlat<U>(depth: 2, source: U): AsyncResultIterable<AsyncFlattened<AsyncFlattened<AsyncFlattened<U>>>>; // prettier-ignore
 
-declare function asyncFlat<U>(depth: 3, iterable: U): AsyncGeneratorIterator<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<U>>>>>; // prettier-ignore
+declare function asyncFlat<U>(depth: 3, source: U): AsyncResultIterable<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<U>>>>>; // prettier-ignore
 
-declare function asyncFlat<U>(depth: 4, iterable: U): AsyncGeneratorIterator<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<U>>>>>>; // prettier-ignore
+declare function asyncFlat<U>(depth: 4, source: U): AsyncResultIterable<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<U>>>>>>; // prettier-ignore
 
-declare function asyncFlat<U>(depth: 5, iterable: U): AsyncGeneratorIterator<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<U>>>>>>>; // prettier-ignore
+declare function asyncFlat<U>(depth: 5, source: U): AsyncResultIterable<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<U>>>>>>>; // prettier-ignore
 
-declare function asyncFlat<U>(depth: 6, iterable: U): AsyncGeneratorIterator<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<U>>>>>>>>; // prettier-ignore
+declare function asyncFlat<U>(depth: 6, source: U): AsyncResultIterable<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<U>>>>>>>>; // prettier-ignore
 
-declare function asyncFlat<U>(depth: 7, iterable: U): AsyncGeneratorIterator<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<U>>>>>>>>>; // prettier-ignore
+declare function asyncFlat<U>(depth: 7, source: U): AsyncResultIterable<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<U>>>>>>>>>; // prettier-ignore
 
-declare function asyncFlat(depth: 0): <U>(iterable: U) => AsyncGeneratorIterator<AsyncFlattened<U>>; // prettier-ignore
+declare function asyncFlat(depth: 0): <U>(source: U) => AsyncResultIterable<AsyncFlattened<U>>; // prettier-ignore
 
-declare function asyncFlat(depth: 1): <U>(iterable: U) => AsyncGeneratorIterator<AsyncFlattened<AsyncFlattened<U>>>; // prettier-ignore
+declare function asyncFlat(depth: 1): <U>(source: U) => AsyncResultIterable<AsyncFlattened<AsyncFlattened<U>>>; // prettier-ignore
 
-declare function asyncFlat(depth: 2): <U>(iterable: U) => AsyncGeneratorIterator<AsyncFlattened<AsyncFlattened<AsyncFlattened<U>>>>; // prettier-ignore
+declare function asyncFlat(depth: 2): <U>(source: U) => AsyncResultIterable<AsyncFlattened<AsyncFlattened<AsyncFlattened<U>>>>; // prettier-ignore
 
-declare function asyncFlat(depth: 3): <U>(iterable: U) => AsyncGeneratorIterator<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<U>>>>>; // prettier-ignore
+declare function asyncFlat(depth: 3): <U>(source: U) => AsyncResultIterable<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<U>>>>>; // prettier-ignore
 
-declare function asyncFlat(depth: 4): <U>(iterable: U) => AsyncGeneratorIterator<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<U>>>>>>; // prettier-ignore
+declare function asyncFlat(depth: 4): <U>(source: U) => AsyncResultIterable<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<U>>>>>>; // prettier-ignore
 
-declare function asyncFlat(depth: 5): <U>(iterable: U) => AsyncGeneratorIterator<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<U>>>>>>>; // prettier-ignore
+declare function asyncFlat(depth: 5): <U>(source: U) => AsyncResultIterable<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<U>>>>>>>; // prettier-ignore
 
-declare function asyncFlat(depth: 6): <U>(iterable: U) => AsyncGeneratorIterator<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<U>>>>>>>>; // prettier-ignore
+declare function asyncFlat(depth: 6): <U>(source: U) => AsyncResultIterable<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<AsyncFlattened<U>>>>>>>>; // prettier-ignore
 
 declare function asyncFlat(
   depth: 7,
 ): <U>(
-  iterable: U,
-) => AsyncGeneratorIterator<
+  source: U,
+) => AsyncResultIterable<
   AsyncFlattened<
     AsyncFlattened<
       AsyncFlattened<
@@ -58,16 +57,16 @@ declare function asyncFlat(
   >
 >;
 declare function asyncFlat(
-  shouldFlat: (item: any) => AsyncMaybePromise<boolean>,
+  shouldFlat: (item: any) => boolean | Promise<boolean>,
   depth: number,
-  iter: AsyncInputIterable<any>,
-): AsyncGeneratorIterator<any>;
-declare function asyncFlat(iterable: AsyncInputIterable<any>): AsyncGeneratorIterator<any>;
+  iter: AsyncSourceIterable<any>,
+): AsyncResultIterable<any>;
+declare function asyncFlat(source: AsyncSourceIterable<any>): AsyncResultIterable<any>;
 declare function asyncFlat(
   depth: number,
-  iterable: AsyncInputIterable<any>,
-): AsyncGeneratorIterator<any>;
+  source: AsyncSourceIterable<any>,
+): AsyncResultIterable<any>;
 declare function asyncFlat(
   depth?: number,
-): (iterable: AsyncInputIterable<any>) => AsyncGeneratorIterator<any>;
+): (source: AsyncSourceIterable<any>) => AsyncResultIterable<any>;
 export default asyncFlat;

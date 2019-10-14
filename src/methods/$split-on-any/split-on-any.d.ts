@@ -6,20 +6,20 @@
  * More information can be found in CONTRIBUTING.md
  */
 
-import { InputIterable as SyncInputIterable } from '../../internal/iterable';
-import { InputIterable, GeneratorIterator } from '../../internal/iterable';
+import { SourceIterable as SyncSourceIterable } from '../../types/iterable';
+import { SourceIterable, ResultIterable } from '../../types/iterable';
 declare function splitOnAny(
-  values: SyncInputIterable<string>,
-): (iterable: string) => GeneratorIterator<string>;
+  values: SyncSourceIterable<string>,
+): (source: string) => ResultIterable<string>;
 declare function splitOnAny(
-  values: SyncInputIterable<any>,
-): <T = any>(iterable: InputIterable<T>) => GeneratorIterator<GeneratorIterator<T>>;
+  values: SyncSourceIterable<any>,
+): <T = any>(source: SourceIterable<T>) => ResultIterable<ResultIterable<T>>;
 declare function splitOnAny(
-  values: SyncInputIterable<string>,
-  iterable: string,
-): GeneratorIterator<string>;
+  values: SyncSourceIterable<string>,
+  source: string,
+): ResultIterable<string>;
 declare function splitOnAny<T = any>(
-  values: SyncInputIterable<any>,
-  iterable: InputIterable<T>,
-): GeneratorIterator<GeneratorIterator<T>>;
+  values: SyncSourceIterable<any>,
+  source: SourceIterable<T>,
+): ResultIterable<ResultIterable<T>>;
 export default splitOnAny;

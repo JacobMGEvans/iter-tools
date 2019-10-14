@@ -6,15 +6,15 @@
  * More information can be found in CONTRIBUTING.md
  */
 
-import { AsyncInputIterable, AsyncGeneratorIterator } from '../../internal/async-iterable';
+import { AsyncSourceIterable, AsyncResultIterable } from '../../types/async-iterable';
 declare function asyncEnumerate<T = any>(
-  iterable: AsyncInputIterable<T>,
-): AsyncGeneratorIterator<[number, T]>;
+  iterable: AsyncSourceIterable<T>,
+): AsyncResultIterable<[number, T]>;
 declare function asyncEnumerate<T = any>(
   firstIdx: number,
-  iterable: AsyncInputIterable<T>,
-): AsyncGeneratorIterator<[number, T]>;
+  source: AsyncSourceIterable<T>,
+): AsyncResultIterable<[number, T]>;
 declare function asyncEnumerate(
   firstIdx: number,
-): <T = any>(iterable: AsyncInputIterable<T>) => AsyncGeneratorIterator<[number, T]>;
+): <T = any>(source: AsyncSourceIterable<T>) => AsyncResultIterable<[number, T]>;
 export default asyncEnumerate;

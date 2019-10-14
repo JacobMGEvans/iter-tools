@@ -6,20 +6,20 @@
  * More information can be found in CONTRIBUTING.md
  */
 
-import { InputIterable as SyncInputIterable } from '../../internal/iterable';
-import { AsyncInputIterable, AsyncGeneratorIterator } from '../../internal/async-iterable';
+import { SourceIterable as SyncSourceIterable } from '../../types/iterable';
+import { AsyncSourceIterable, AsyncResultIterable } from '../../types/async-iterable';
 declare function asyncSplitOnAny(
-  values: SyncInputIterable<string>,
-): (iterable: string) => AsyncGeneratorIterator<string>;
+  values: SyncSourceIterable<string>,
+): (source: string) => AsyncResultIterable<string>;
 declare function asyncSplitOnAny(
-  values: SyncInputIterable<any>,
-): <T = any>(iterable: AsyncInputIterable<T>) => AsyncGeneratorIterator<AsyncGeneratorIterator<T>>;
+  values: SyncSourceIterable<any>,
+): <T = any>(source: AsyncSourceIterable<T>) => AsyncResultIterable<AsyncResultIterable<T>>;
 declare function asyncSplitOnAny(
-  values: SyncInputIterable<string>,
-  iterable: string,
-): AsyncGeneratorIterator<string>;
+  values: SyncSourceIterable<string>,
+  source: string,
+): AsyncResultIterable<string>;
 declare function asyncSplitOnAny<T = any>(
-  values: SyncInputIterable<any>,
-  iterable: AsyncInputIterable<T>,
-): AsyncGeneratorIterator<AsyncGeneratorIterator<T>>;
+  values: SyncSourceIterable<any>,
+  source: AsyncSourceIterable<T>,
+): AsyncResultIterable<AsyncResultIterable<T>>;
 export default asyncSplitOnAny;

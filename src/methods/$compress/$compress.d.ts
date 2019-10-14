@@ -1,8 +1,8 @@
-import { $InputIterable, $GeneratorIterator } from '../../internal/$iterable';
+import { $SourceIterable, $ResultIterable } from '../../types/$iterable';
 
 declare function $compress<T = any>(
-  iterable: $InputIterable<T>,
-  compress: $InputIterable<boolean>,
-): $GeneratorIterator<T>;
+  source: $SourceIterable<T>,
+  compress: $SourceIterable<boolean>,
+): $ResultIterable<T>;
 
 export default $compress;

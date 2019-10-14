@@ -6,12 +6,12 @@
  * More information can be found in CONTRIBUTING.md
  */
 
-import { AsyncInputIterable, AsyncGeneratorIterator } from '../../internal/async-iterable';
+import { AsyncSourceIterable, AsyncResultIterable } from '../../types/async-iterable';
 declare function asyncMap<O, T = any>(
   func: (item: T) => O | Promise<O>,
-): (iterable: AsyncInputIterable<T>) => AsyncGeneratorIterator<O>;
+): (source: AsyncSourceIterable<T>) => AsyncResultIterable<O>;
 declare function asyncMap<O, T = any>(
   func: (item: T) => O | Promise<O>,
-  iterable: AsyncInputIterable<T>,
-): AsyncGeneratorIterator<O>;
+  source: AsyncSourceIterable<T>,
+): AsyncResultIterable<O>;
 export default asyncMap;

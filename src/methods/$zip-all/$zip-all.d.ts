@@ -1,12 +1,12 @@
-import { $InputIterable, $GeneratorIterator } from '../../internal/$iterable';
+import { $SourceIterable, $ResultIterable } from '../../types/$iterable';
 
 declare function $zipAll<F, T = any>(
   options: { filler?: F },
-  ...iterables: Array<$InputIterable<T>>
-): $GeneratorIterator<Array<T | F>>;
+  ...sources: Array<$SourceIterable<T>>
+): $ResultIterable<Array<T | F>>;
 
 declare function $zipAll<T = any>(
-  ...iterables: Array<$InputIterable<T>>
-): $GeneratorIterator<Array<T | undefined>>;
+  ...sources: Array<$SourceIterable<T>>
+): $ResultIterable<Array<T | undefined>>;
 
 export default $zipAll;

@@ -6,9 +6,9 @@
  * More information can be found in CONTRIBUTING.md
  */
 
-/* eslint-disable no-unused-vars,import/no-duplicates */
+/* eslint-disable no-unused-vars,import/no-duplicates,no-constant-condition */
 
-import { AsyncIterable } from '../../../internal/async-iterable';
+import { AsyncIterable } from '../../../types/async-iterable';
 import { asyncInterleave, AsyncInterleaveBuffer, asyncToArray } from '../../..';
 describe('asyncInterleave', () => {
   const a = [1, 2, 3];

@@ -6,10 +6,8 @@
  * More information can be found in CONTRIBUTING.md
  */
 
-import { GeneratorIterator as SyncGeneratorIterator } from '../../internal/iterable';
-import { InputIterable, GeneratorIterator } from '../../internal/iterable';
-declare function split<T = any>(
-  iterable: InputIterable<T>,
-): GeneratorIterator<SyncGeneratorIterator<T>>;
-declare function split(iterable: string): string;
+import { ResultIterable as SyncResultIterable } from '../../types/iterable';
+import { SourceIterable, ResultIterable } from '../../types/iterable';
+declare function split<T = any>(source: SourceIterable<T>): ResultIterable<SyncResultIterable<T>>;
+declare function split(source: string): string;
 export default split;

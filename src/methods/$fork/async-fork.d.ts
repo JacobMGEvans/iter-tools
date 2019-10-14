@@ -6,16 +6,16 @@
  * More information can be found in CONTRIBUTING.md
  */
 
-import { GeneratorIterator as SyncGeneratorIterator } from '../../internal/iterable';
-import { AsyncInputIterable, AsyncGeneratorIterator } from '../../internal/async-iterable';
+import { ResultIterable as SyncResultIterable } from '../../types/iterable';
+import { AsyncSourceIterable, AsyncResultIterable } from '../../types/async-iterable';
 declare function asyncFork<T = any>(
-  iterable: AsyncInputIterable<T>,
-): SyncGeneratorIterator<AsyncGeneratorIterator<T>>;
-declare function asyncFork<T = any>(
-  n: number,
-): (iterable: AsyncInputIterable<T>) => SyncGeneratorIterator<AsyncGeneratorIterator<T>>;
+  source: AsyncSourceIterable<T>,
+): SyncResultIterable<AsyncResultIterable<T>>;
 declare function asyncFork<T = any>(
   n: number,
-  iterable: AsyncInputIterable<T>,
-): SyncGeneratorIterator<AsyncGeneratorIterator<T>>;
+): (source: AsyncSourceIterable<T>) => SyncResultIterable<AsyncResultIterable<T>>;
+declare function asyncFork<T = any>(
+  n: number,
+  source: AsyncSourceIterable<T>,
+): SyncResultIterable<AsyncResultIterable<T>>;
 export default asyncFork;

@@ -1,23 +1,23 @@
 import { $MaybePromise } from '../../../generate/async.macro';
 
-import { $InputIterable } from '../../internal/$iterable';
+import { $SourceIterable } from '../../types/$iterable';
 
 declare function $joinAsStringWith(
   value: string,
-  iterable: $InputIterable<string>,
+  strings: $SourceIterable<string>,
 ): $MaybePromise<string>;
 
 declare function $joinAsStringWith(
   value: string,
-  iterable: $InputIterable<$InputIterable<string>>,
+  strings: $SourceIterable<$SourceIterable<string>>,
 ): $MaybePromise<string>;
 
 declare function $joinAsStringWith(
   value: string,
-): (iterable: $InputIterable<string>) => $MaybePromise<string>;
+): (strings: $SourceIterable<string>) => $MaybePromise<string>;
 
 declare function $joinAsStringWith(
   value: string,
-): (iterable: $InputIterable<$InputIterable<string>>) => $MaybePromise<string>;
+): (strings: $SourceIterable<$SourceIterable<string>>) => $MaybePromise<string>;
 
 export default $joinAsStringWith;

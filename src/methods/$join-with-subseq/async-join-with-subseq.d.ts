@@ -6,13 +6,13 @@
  * More information can be found in CONTRIBUTING.md
  */
 
-import { InputIterable as SyncInputIterable } from '../../internal/iterable';
-import { AsyncInputIterable, AsyncGeneratorIterator } from '../../internal/async-iterable';
+import { SourceIterable as SyncSourceIterable } from '../../types/iterable';
+import { AsyncSourceIterable, AsyncResultIterable } from '../../types/async-iterable';
 declare function asyncJoinWithSubseq<W, T = any>(
-  subseq: SyncInputIterable<W>,
-  iterable: AsyncInputIterable<AsyncInputIterable<T>>,
-): AsyncGeneratorIterator<T | W>;
+  subseq: SyncSourceIterable<W>,
+  source: AsyncSourceIterable<AsyncSourceIterable<T>>,
+): AsyncResultIterable<T | W>;
 declare function asyncJoinWithSubseq<W>(
-  subseq: SyncInputIterable<W>,
-): <T = any>(iterable: AsyncInputIterable<AsyncInputIterable<T>>) => AsyncGeneratorIterator<T | W>;
+  subseq: SyncSourceIterable<W>,
+): <T = any>(source: AsyncSourceIterable<AsyncSourceIterable<T>>) => AsyncResultIterable<T | W>;
 export default asyncJoinWithSubseq;

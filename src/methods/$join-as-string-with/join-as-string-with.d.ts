@@ -6,14 +6,14 @@
  * More information can be found in CONTRIBUTING.md
  */
 
-import { InputIterable } from '../../internal/iterable';
-declare function joinAsStringWith(value: string, iterable: InputIterable<string>): string;
+import { SourceIterable } from '../../types/iterable';
+declare function joinAsStringWith(value: string, strings: SourceIterable<string>): string;
 declare function joinAsStringWith(
   value: string,
-  iterable: InputIterable<InputIterable<string>>,
+  strings: SourceIterable<SourceIterable<string>>,
 ): string;
-declare function joinAsStringWith(value: string): (iterable: InputIterable<string>) => string;
+declare function joinAsStringWith(value: string): (strings: SourceIterable<string>) => string;
 declare function joinAsStringWith(
   value: string,
-): (iterable: InputIterable<InputIterable<string>>) => string;
+): (strings: SourceIterable<SourceIterable<string>>) => string;
 export default joinAsStringWith;
